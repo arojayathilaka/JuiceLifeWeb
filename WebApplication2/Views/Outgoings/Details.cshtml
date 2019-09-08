@@ -1,0 +1,66 @@
+﻿@model WebApplication2.Outgoing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Outgoing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.employeeSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employeeSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplierCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplierCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purchaseFood)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchaseFood)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.utilityBills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utilityBills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transportCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transportCost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.outgoingId },new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
+</p>

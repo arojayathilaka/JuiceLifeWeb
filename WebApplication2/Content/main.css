@@ -1,0 +1,114 @@
+﻿/*/
+#home_quicklinks {
+    padding: 20px 0;
+    text-align: center;
+}
+
+a.quicklink.link1 {
+    background: #D9230F;
+}
+
+a.quicklink {
+    display: inline-block;
+    width: 302px;
+    height: 173px;
+    position: relative;
+    margin: 90px 30px;
+}
+
+a.quicklink .ql_caption {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: relative;
+  }
+
+.outer {
+    display: table;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-spacing: 0px;
+    padding: 0px;
+}
+
+.inner {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    border-spacing: 0px;
+    padding: 0px;
+}
+
+a.quicklink .ql_caption h2 {
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+    line-height: 1.46em;
+    color: #fff;
+}
+
+a.quicklink.link1 .ql_top {
+    border-bottom-color: #D9230F;
+}
+
+a.quicklink.link1 .ql_bottom {
+    border-top-color: #D9230F;
+}
+
+
+.ql_top {
+    bottom: 173px;
+    border-bottom: 89px solid #ccc;
+}
+
+.ql_bottom {
+    top: 173px;
+    border-top: 89px solid #ccc;
+}
+
+.ql_top, .ql_bottom {
+    position: absolute;
+    left: 0px;
+    width: 0px;
+    border-left: 151px solid transparent;
+    border-right: 151px solid transparent;
+}
+
+a.quicklink {
+    font-size: 36px;
+    font-weight: 500;
+    text-decoration: none;
+}*/
+
+.myButton {
+    -moz-box-shadow: 4px 4px 3px 0px #8a1d1d;
+    -webkit-box-shadow: 4px 4px 3px 0px #8a1d1d;
+    box-shadow: 4px 4px 3px 0px #8a1d1d;
+    background-color: #f20505;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 3px solid #a33e51;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 28px;
+    padding: 32px 76px;
+    text-decoration: none;
+}
+
+.myButton:hover {
+        background-color: #de1111;
+}
+
+.myButton:active {
+        position: relative;
+        top: 1px;
+}

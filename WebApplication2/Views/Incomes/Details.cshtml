@@ -1,0 +1,26 @@
+﻿@model WebApplication2.Income
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Income</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soldFoodItems)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soldFoodItems)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.incomeId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
+</p>

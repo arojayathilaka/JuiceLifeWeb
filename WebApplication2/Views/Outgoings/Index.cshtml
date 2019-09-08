@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplication2.Outgoing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.employeeSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.supplierCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.purchaseFood)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.utilityBills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transportCost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.employeeSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.supplierCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.purchaseFood)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.utilityBills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.transportCost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.outgoingId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.outgoingId }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.outgoingId }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>

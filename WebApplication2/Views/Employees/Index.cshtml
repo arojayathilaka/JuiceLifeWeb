@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebApplication2.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @using (Html.BeginForm("Index", "Employees", FormMethod.Get))
+    {
+        <b>Search By: </b>@Html.RadioButton("searchBy", "Name", true)<text>Name</text>
+        @Html.RadioButton("searchBy", "Address")<text>Address</text>
+        @Html.RadioButton("searchBy", "Position")<text>Position</text>
+        @Html.TextBox("search") <input type="submit" value="Search" class="btn btn-primary" />
+
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeePosition)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">No rows match search criteria</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeePosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeEmail)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+                </td>
+            </tr>
+        }
+
+
+    }
+
+</table>
