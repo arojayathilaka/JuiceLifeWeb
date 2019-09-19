@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Delete";
 }
-
+<br />
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -58,7 +58,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
         </div>
     }
 </div>

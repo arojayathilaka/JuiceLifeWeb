@@ -35,7 +35,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            @Html.ActionLink("Juice Life", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("JUICE LIFE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="nav navbar-nav">
@@ -48,7 +48,8 @@
                     <li>@Html.ActionLink("Outgoing", "Index", "Outgoings", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("Menu", "Index", "Menus", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("Stock", "Index", "Stocks", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    
+                    <li>@Html.ActionLink("Leaves", "Index", "Leaves", new { area = "" }, new { @class = "navbar-brand" })</li>
+
 
                 </ul>
                 <!--<ul class="navbar-nav mr-auto">
@@ -74,7 +75,9 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer></footer>
+        <footer>
+        <p>&copy;@DateTime.Now.Year - JuiceLife Matara</p>
+        </footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>

@@ -1,13 +1,24 @@
 ﻿@model IEnumerable<WebApplication2.Stock>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Stocks";
 }
-
-<h2>Index</h2>
+<br />
+<h2>Stocks</h2>
+<hr />
 
 <p>
     @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-primary" })
+</p>
+<p>
+    @using (Html.BeginForm("Index", "Stocks", FormMethod.Get))
+    {
+        <b>Search By: </b>
+        @Html.RadioButton("searchBy", "ItemName", true)<text>Item Name</text>
+        @Html.RadioButton("searchBy", "Type")<text>Type</text>
+        @Html.TextBox("search") <input type="submit" value="Search" class="btn btn-primary" />
+
+    }
 </p>
 <table class="table">
     <tr>
@@ -34,36 +45,46 @@
         </th>
         <th></th>
     </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="7">No rows match search criteria</td>
+        </tr>
+    }
+    else
+    {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ItemName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Condition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpireDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemCode }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemCode },  new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemCode }, new { @class = "btn btn-primary" })
-        </td>
-    </tr>
-}
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Condition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpireDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ItemCode }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ItemCode }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemCode }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    }
 
-</table>
+    </table>

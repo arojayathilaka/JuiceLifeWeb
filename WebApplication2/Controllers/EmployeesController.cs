@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers
 {
     public class EmployeesController : Controller
     {
-        private DBModel3 db = new DBModel3();
+        private DBModel4 db = new DBModel4();
 
         // GET: Employees
         public ActionResult Index(string searchBy,string search)

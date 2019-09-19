@@ -14,7 +14,6 @@ namespace WebApplication2
 
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Delivery> Deliveries { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Outgoing> Outgoings { get; set; }
@@ -34,13 +33,11 @@ namespace WebApplication2
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Employee>()
-                .Property(e => e.EmployeePhone)
-                .IsFixedLength();
-
             modelBuilder.Entity<SupplierDetail>()
                 .Property(e => e.SupplierPhone)
                 .IsFixedLength();
+
+           
         }
     }
 }

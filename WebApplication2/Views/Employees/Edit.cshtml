@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<br />
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
@@ -65,5 +65,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn btn-primary" })
 </div>

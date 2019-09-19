@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -172,12 +173,15 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomesController.cs" />
+    <Compile Include="Controllers\LeavesController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\OutgoingsController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\SupplierDetailsController.cs" />
     <Compile Include="Controllers\SupplyDetailsController.cs" />
+    <Compile Include="DBModel4.cs" />
+    <Compile Include="Models\Leave.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="DBModel3.cs" />
     <Compile Include="Models\Delivery.cs" />
@@ -277,6 +281,11 @@
     <Content Include="Views\SupplyDetails\Details.cshtml" />
     <Content Include="Views\SupplyDetails\Edit.cshtml" />
     <Content Include="Views\SupplyDetails\Index.cshtml" />
+    <Content Include="Views\Leaves\Create.cshtml" />
+    <Content Include="Views\Leaves\Delete.cshtml" />
+    <Content Include="Views\Leaves\Details.cshtml" />
+    <Content Include="Views\Leaves\Edit.cshtml" />
+    <Content Include="Views\Leaves\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -287,7 +296,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

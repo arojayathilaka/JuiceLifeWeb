@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebApplication2.Leave>
+
+@{
+    ViewBag.Title = "Leaves";
+}
+<br />
+<h2>Leaves</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Employee_Name_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Leave_Type_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Start_date_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_End_date_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Document_)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Employee_Name_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Leave_Type_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Start_date_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_End_date_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Document_)
+        </td>
+        <td>
+            @Html.ActionLink("Review Leave", "Edit", new { id=item.C_Leave_ID_ }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.C_Leave_ID_ }, new { @class = "btn btn-primary" }) |
+        </td>
+    </tr>
+}
+
+</table>

@@ -3,12 +3,14 @@
 @{
     ViewBag.Title = "Employees";
 }
+<br />
+<h2>Employee List</h2>
 
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-primary" })
 </p>
+
 <p>
     @using (Html.BeginForm("Index", "Employees", FormMethod.Get))
     {
@@ -19,6 +21,7 @@
 
     }
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -65,9 +68,9 @@
                     @Html.DisplayFor(modelItem => item.EmployeeEmail)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId }, new { @class = "btn btn-primary" })
                 </td>
             </tr>
         }

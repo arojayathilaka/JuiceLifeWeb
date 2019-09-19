@@ -22,6 +22,9 @@ namespace WebApplication2
 
         public double TotalPrice { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
+        //[Column("Date", TypeName = "date")]
         public DateTime Date { get; set; }
     }
 }

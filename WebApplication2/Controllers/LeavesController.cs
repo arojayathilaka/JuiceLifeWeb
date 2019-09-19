@@ -1,123 +1,127 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication2;
 
 namespace WebApplication2.Controllers
 {
-    public class StocksController : Controller
+    public class LeavesController : Controller
     {
-        private DBModel3 db = new DBModel3();
+        private DBModel4 db = new DBModel4();
 
-        // GET: Stocks
-        public ActionResult Index(string searchBy, string search)
+        // GET: Leaves
+        public ActionResult Index()
         {
-            if (search == "Type")
-            {
-                return View(db.Stocks.Where(x => x.Type.StartsWith(search) || search == null).ToList());
-            }
-            else
-            {
-                return View(db.Stocks.Where(x => x.ItemName.StartsWith(search) || search == null).ToList());
-            }
+            return View(db.Leaves.ToList());
         }
 
-        // GET: Stocks/Details/5
+        // GET: Leaves/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Leave leave = db.Leaves.Find(id);
+            if (leave == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            return View(leave);
         }
 
-        // GET: Stocks/Create
+        // GET: Leaves/Create
         public ActionResult Create()
         {
+            DBModel4 mdl1 = new DBModel4();
+            var getEmployeeList = mdl1.Employees.ToList();
+            SelectList list = new SelectList(getEmployeeList, "EmployeeName", "EmployeeName");
+            ViewBag.employeeListName = list;
+
             return View();
         }
 
-        // POST: Stocks/Create
+        // POST: Leaves/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemCode,ItemName,Type,Condition,Quantity,ExpireDate,UnitPrice,SupplierName")] Stock stock)
+        public ActionResult Create([Bind(Include = "C_Leave_ID_,C_Employee_Name_,Reason,C_Leave_Type_,C_Start_date_,C_End_date_,Length,Status,C_Document_")] Leave leave, HttpPostedFileBase ImageFile)
         {
+           string ImageFileName = Path.GetFileName(ImageFile.FileName);
+
+            ImageFileName = DateTime.Now.ToString("yymmssfff") + Path.GetExtension(ImageFile.FileName);
+            leave.C_Document_ = "~/Image/" + ImageFileName;
+
+            string FolderPath = Path.Combine(Server.MapPath("~/Image"), ImageFileName);
+            ImageFile.SaveAs(FolderPath);
+
             if (ModelState.IsValid)
             {
-                db.Stocks.Add(stock);
+                db.Leaves.Add(leave);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(stock);
+            ModelState.Clear();
+            return View(leave);
         }
 
-        // GET: Stocks/Edit/5
+        // GET: Leaves/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Leave leave = db.Leaves.Find(id);
+            if (leave == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            return View(leave);
         }
 
-        // POST: Stocks/Edit/5
+        // POST: Leaves/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemCode,ItemName,Type,Condition,Quantity,ExpireDate,UnitPrice,SupplierName")] Stock stock)
+        public ActionResult Edit([Bind(Include = "C_Leave_ID_,C_Employee_Name_,Reason,C_Leave_Type_,C_Start_date_,C_End_date_,Length,Status,C_Document_")] Leave leave)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stock).State = EntityState.Modified;
+                db.Entry(leave).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stock);
+            return View(leave);
         }
 
-        // GET: Stocks/Delete/5
+        // GET: Leaves/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stock stock = db.Stocks.Find(id);
-            if (stock == null)
+            Leave leave = db.Leaves.Find(id);
+            if (leave == null)
             {
                 return HttpNotFound();
             }
-            return View(stock);
+            return View(leave);
         }
 
-        // POST: Stocks/Delete/5
+        // POST: Leaves/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stock stock = db.Stocks.Find(id);
-            db.Stocks.Remove(stock);
+            Leave leave = db.Leaves.Find(id);
+            db.Leaves.Remove(leave);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
